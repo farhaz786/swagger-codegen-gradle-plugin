@@ -13,7 +13,7 @@ see the [swagger-codegen-gradle-plugin-example](https://github.com/thebignet/swa
 Here is an example of how to use the plugin in a `build.gradle` file
 ```groovy
 plugins {
-    id 'org.detoeuf.swagger-codegen' version '1.7.1'
+    id 'org.detoeuf.swagger-codegen' version '1.7.2'
     id 'java'
 }
 
