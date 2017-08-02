@@ -9,14 +9,14 @@ import static org.junit.Assert.assertTrue
 
 class SwaggerCodeGenTaskTest {
     @Test
-    public void canAddTaskToProject() {
+    void canAddTaskToProject() {
         Project project = ProjectBuilder.builder().build()
         def task = project.task('swagger', type: SwaggerCodeGenTask)
         assertTrue(task instanceof SwaggerCodeGenTask)
     }
 
     @Test
-    public void basicConfiguration() {
+    void basicConfiguration() {
 
         URL url = Thread.currentThread().getContextClassLoader().getResource('petstore.yaml');
         File file = new File(url.getPath());
@@ -29,12 +29,12 @@ class SwaggerCodeGenTaskTest {
                 outputDir: 'target/generated-sources/swagger',
                 lang: 'java',
                 additionalProperties: [
-                        'apiPackage': 'com.detoeuf.testApi',
-                        'configPackage': 'com.detoeuf.testConfig',
+                        'apiPackage'    : 'com.detoeuf.testApi',
+                        'configPackage' : 'com.detoeuf.testConfig',
                         'invokerPackage': 'com.detoeuf.testPackage',
-                        'modelPackage': 'com.detoeuf.testModel',
-                        'library': 'okhttp-gson',
-                        'dateLibrary': 'java8'
+                        'modelPackage'  : 'com.detoeuf.testModel',
+                        'library'       : 'okhttp-gson',
+                        'dateLibrary'   : 'java8'
                 ]
         )
 
@@ -44,7 +44,7 @@ class SwaggerCodeGenTaskTest {
     }
 
     @Test
-    public void onlyApisAndModels() {
+    void onlyApisAndModels() {
 
         URL url = Thread.currentThread().getContextClassLoader().getResource('petstore.yaml');
         File file = new File(url.getPath());
@@ -57,16 +57,19 @@ class SwaggerCodeGenTaskTest {
                 outputDir: 'target/generated-sources/swagger',
                 lang: 'java',
                 additionalProperties: [
-                        'apiPackage': 'com.detoeuf.testApi',
-                        'configPackage': 'com.detoeuf.testConfig',
-                        'invokerPackage': 'com.detoeuf.testPackage',
-                        'modelPackage': 'com.detoeuf.testModel',
-                        'library': 'okhttp-gson',
+                        'apiPackage'       : 'com.detoeuf.testApi',
+                        'configPackage'    : 'com.detoeuf.testConfig',
+                        'invokerPackage'   : 'com.detoeuf.testPackage',
+                        'modelPackage'     : 'com.detoeuf.testModel',
+                        'library'          : 'okhttp-gson',
                         'serializableModel': 'true'
                 ],
                 systemProperties: [
-                        'apis' : '',
-                        'models' : ''
+                        'apis'  : '',
+                        'models': ''
+                ],
+                importMappings: [
+                        'Dog': 'io.swagger.petstore.client.jersey1.model.Dog'
                 ]
         )
 

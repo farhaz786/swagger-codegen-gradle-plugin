@@ -37,6 +37,9 @@ swagger {
         'apis' : '',
         'models' : ''
     ]
+    importMappings: [
+        'Dog': 'io.swagger.petstore.client.jersey1.model.Dog'
+    ]
 }
 
 sourceSets {
