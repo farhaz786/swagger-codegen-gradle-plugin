@@ -34,7 +34,7 @@ uploadArchives {
     }
 }
 
-version = '1.7.2'
+version = '1.7.3'
 group = 'org.detoeuf'
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
