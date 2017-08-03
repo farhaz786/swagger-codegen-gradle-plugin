@@ -29,10 +29,10 @@ class SwaggerCodeGenTaskTest {
                 outputDir: 'target/generated-sources/swagger',
                 lang: 'java',
                 additionalProperties: [
-                        'apiPackage'    : 'com.detoeuf.testApi',
-                        'configPackage' : 'com.detoeuf.testConfig',
-                        'invokerPackage': 'com.detoeuf.testPackage',
-                        'modelPackage'  : 'com.detoeuf.testModel',
+                        'invokerPackage': 'io.swagger.petstore.client',
+                        'apiPackage'    : 'io.swagger.petstore.client.api',
+                        'configPackage' : 'io.swagger.petstore.client.config',
+                        'modelPackage'  : 'io.swagger.petstore.client.model',
                         'library'       : 'okhttp-gson',
                         'dateLibrary'   : 'java8'
                 ]
@@ -57,10 +57,10 @@ class SwaggerCodeGenTaskTest {
                 outputDir: 'target/generated-sources/swagger',
                 lang: 'java',
                 additionalProperties: [
-                        'apiPackage'       : 'com.detoeuf.testApi',
-                        'configPackage'    : 'com.detoeuf.testConfig',
-                        'invokerPackage'   : 'com.detoeuf.testPackage',
-                        'modelPackage'     : 'com.detoeuf.testModel',
+                        'invokerPackage'   : 'io.swagger.petstore.client',
+                        'apiPackage'       : 'io.swagger.petstore.client.api',
+                        'configPackage'    : 'io.swagger.petstore.client.config',
+                        'modelPackage'     : 'io.swagger.petstore.client.model',
                         'library'          : 'okhttp-gson',
                         'serializableModel': 'true'
                 ],
@@ -69,7 +69,7 @@ class SwaggerCodeGenTaskTest {
                         'models': ''
                 ],
                 importMappings: [
-                        'Dog': 'io.swagger.petstore.client.jersey1.model.Dog'
+                        'Dog': 'io.swagger.petstore.client.model.Dog'
                 ]
         )
 

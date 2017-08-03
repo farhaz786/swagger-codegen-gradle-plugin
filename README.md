@@ -23,22 +23,21 @@ repositories {
 
 swagger {
     inputSpec = 'http://petstore.swagger.io/v2/swagger.json'
-
-    outputDir = 'build/swagger'
-    lang = 'spring-mvc'
+    outputDir = file('build/swagger')
+    lang = 'java'
 
     additionalProperties = [
-            'invokerPackage'   : 'io.swagger.petstore.client.jersey1',
-            'modelPackage'     : 'io.swagger.petstore.client.jersey1.model',
-            'apiPackage'       : 'io.swagger.petstore.client.jersey1.api',
+            'invokerPackage'   : 'io.swagger.petstore.client',
+            'modelPackage'     : 'io.swagger.petstore.client.model',
+            'apiPackage'       : 'io.swagger.petstore.client.api',
             'dateLibrary'      : 'java8'
     ]
     systemProperties = [
-        'apis' : '',
-        'models' : ''
+            'apis' : '',
+            'models' : ''
     ]
-    importMappings: [
-        'Dog': 'io.swagger.petstore.client.jersey1.model.Dog'
+    importMappings = [
+            'Dog': 'io.swagger.petstore.client.model.Dog'
     ]
 }
 
@@ -51,6 +50,7 @@ sourceSets {
 }
 
 ext {
+    spring_boot_version = '1.5.6.RELEASE'
     jackson_version = '2.4.2'
     jersey_version = '1.18'
     jodatime_version = '2.3'
@@ -58,7 +58,7 @@ ext {
 }
 
 dependencies {
-    swaggerCompile 'org.springframework.boot:spring-boot-starter-web'
+    swaggerCompile "org.springframework.boot:spring-boot-starter-web:$spring_boot_version"
 
     compile "com.sun.jersey:jersey-client:$jersey_version"
     compile "com.sun.jersey.contribs:jersey-multipart:$jersey_version"
@@ -67,6 +67,7 @@ dependencies {
     compile "com.fasterxml.jackson.core:jackson-databind:$jackson_version"
     compile "com.fasterxml.jackson.datatype:jackson-datatype-joda:2.1.5"
     compile "joda-time:joda-time:$jodatime_version"
+    compile 'io.swagger:swagger-codegen:2.2.3'
 
     testCompile "junit:junit:$junit_version"
 }
