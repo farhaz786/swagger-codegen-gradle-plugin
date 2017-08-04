@@ -13,11 +13,14 @@ see the [swagger-codegen-gradle-plugin-example](https://github.com/thebignet/swa
 Here is an example of how to use the plugin in a `build.gradle` file
 ```groovy
 plugins {
-    id 'org.detoeuf.swagger-codegen' version '1.7.3'
+    id 'org.detoeuf.swagger-codegen' version '1.7.4'
     id 'java'
 }
 
+apply plugin: 'org.detoeuf.swagger-codegen'
+
 repositories {
+    mavenCentral()
     jcenter()
 }
 
@@ -32,10 +35,6 @@ swagger {
             'apiPackage'       : 'io.swagger.petstore.client.api',
             'dateLibrary'      : 'java8'
     ]
-    systemProperties = [
-            'apis' : '',
-            'models' : ''
-    ]
     importMappings = [
             'Dog': 'io.swagger.petstore.client.model.Dog'
     ]
@@ -49,6 +48,8 @@ sourceSets {
     }
 }
 
+classes.dependsOn('swagger')
+
 ext {
     spring_boot_version = '1.5.6.RELEASE'
     jackson_version = '2.4.2'
@@ -59,6 +60,12 @@ ext {
 
 dependencies {
     swaggerCompile "org.springframework.boot:spring-boot-starter-web:$spring_boot_version"
+    swaggerCompile 'io.swagger:swagger-annotations:1.5.16'
+    swaggerCompile 'com.squareup.okhttp:okhttp:2.7.5'
+    swaggerCompile 'com.squareup.okhttp:logging-interceptor:2.7.5'
+    swaggerCompile 'com.google.code.gson:gson:2.8.1'
+
+    compile sourceSets.swagger.output
 
     compile "com.sun.jersey:jersey-client:$jersey_version"
     compile "com.sun.jersey.contribs:jersey-multipart:$jersey_version"
@@ -70,6 +77,10 @@ dependencies {
     compile 'io.swagger:swagger-codegen:2.2.3'
 
     testCompile "junit:junit:$junit_version"
+
+    runtime 'com.squareup.okhttp:okhttp:2.7.5'
+    runtime 'com.squareup.okhttp:logging-interceptor:2.7.5'
+    runtime 'com.google.code.gson:gson:2.8.1'
 }
 ```
 

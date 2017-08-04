@@ -8,6 +8,5 @@ class SwaggerCodeGenPlugin implements Plugin<Project> {
     void apply(Project project) {
         project.extensions.create('swagger', CodegenConfigurator)
         project.task('swagger', type: SwaggerCodeGenTask)
-        project.getTasksByName('classes', false).each { it.dependsOn('swagger') }
     }
 }
