@@ -5,6 +5,13 @@ swagger-codegen-gradle-plugin
 
 A Gradle plugin to support the [swagger](http://swagger.io) code generation project
 
+
+[DEPRECATED] !!!
+------------
+
+see the [swagger-codegen-gradle-plugin-example](https://github.com/thebignet/swagger-codegen-gradle-plugin-example) for creating a Gradle task to generate code with Swagger Codegen.
+
+
 Usage
 ============================
 
